@@ -37,7 +37,7 @@ Project 3 involves screen sizes to multiple devices, no explict instructions for
 
 1. To improve what I know about CSS to know how it affect other CSS propertys.
 2. Knowing which CSS property to use and where to place it for the right declaration.
-3. Learning how to use it properly.
+3. Learning how to use CSS properties and declarations properly.
 
 ### Deployment
 
