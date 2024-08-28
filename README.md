@@ -41,4 +41,5 @@ Project 3 involves screen sizes to multiple devices, no explict instructions for
 
 ### Deployment
 
-[Noah Ramos's Project 3 Spots]()
+[Noah Ramos's Project 3 Spots](https://noah-ram52.github.io/se_project_spots/)
+[Noah Ramos's Project 3 GitHub View](https://github.com/Noah-Ram52/se_project_spots)
