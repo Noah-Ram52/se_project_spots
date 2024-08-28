@@ -12,4 +12,12 @@
 
 .footer__text {
   text-align: center;
+  font-family: "Poppins", "Arial", "Helvetica", serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  width: 104px;
+  height: 16px;
+  white-space: nowrap;
 }
