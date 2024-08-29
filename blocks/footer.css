@@ -19,4 +19,13 @@
   text-align: left;
   max-width: 104px;
   white-space: nowrap;
+  padding: 60px 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 627px) {
+  .footer {
+    max-width: 288px;
+    margin: 0 auto;
+  }
 }
