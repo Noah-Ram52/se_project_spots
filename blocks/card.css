@@ -10,6 +10,8 @@
   font-weight: 500;
   line-height: 24px;
   text-align: left;
+  overflow: hidden;
+  max-width: 1280px;
 }
 
 .card__image {
@@ -35,13 +37,16 @@
   opacity: 40%;
 }
 
+.card__like-btn:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 627px) {
   .card__image {
     height: 288px;
   }
 
   .card__title {
-    overflow: hidden;
     max-width: 235px;
   }
 }

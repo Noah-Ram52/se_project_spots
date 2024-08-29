@@ -1,7 +1,7 @@
 .footer {
   background-color: #fcf5e5;
   max-width: 1280px;
-  height: 60px;
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,6 @@
   font-weight: 400;
   line-height: 16px;
   text-align: left;
-  width: 104px;
-  height: 16px;
+  max-width: 104px;
   white-space: nowrap;
 }
