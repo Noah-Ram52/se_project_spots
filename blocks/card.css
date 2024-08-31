@@ -31,11 +31,13 @@
 
 .card__like-btn {
   background-image: url(../images/like-button.svg);
+  background-size: cover;
   width: 23px;
   height: 20px;
   border: none;
   background-color: transparent;
   opacity: 40%;
+  padding: 0;
 }
 
 .card__like-btn:hover {
@@ -52,5 +54,14 @@
     max-width: 235px;
     font-size: 16px;
     line-height: 16px;
+  }
+
+  .card__like-btn {
+    max-width: 20px;
+    max-height: 18px;
+  }
+
+  .card__content {
+    max-width: 288px;
   }
 }
