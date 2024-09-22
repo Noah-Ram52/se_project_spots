@@ -72,7 +72,7 @@ function closeModal() {
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
-  profileDescription.textContent = editModalDescriptionInput.textContent;
+  profileDescription.textContent = editModalDescriptionInput.value;
 
   closeModal();
 }
