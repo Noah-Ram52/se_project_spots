@@ -130,6 +130,10 @@
   line-height: 17.6px;
 }
 
+.modal__form {
+  margin-top: 32px;
+}
+
 .modal__input {
   padding: 16px 12px;
   border: 1px solid rgba(33, 33, 33, 0.4);
@@ -154,9 +158,24 @@
   line-height: 16px;
 }
 
-.modal__submit-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-  cursor: pointer;
+.modal__error {
+  display: block;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17.6px;
+  text-align: left;
+  color: red;
+  visibility: visible;
+}
+
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.modal__button_inactive {
+  background-color: grey;
+  cursor: not-allowed;
 }
 
 @media screen and (max-width: 480px) {
