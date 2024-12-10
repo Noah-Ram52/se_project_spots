@@ -58,6 +58,8 @@ const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
 function handleAddCardSubmit(evt) {
+  console.log(settings.inactiveButtonClass);
+  console.log(cardSubmitBtn);
   evt.preventDefault();
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);

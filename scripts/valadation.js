@@ -9,21 +9,23 @@ const settings = {
 
 const showInputError = (formEl, inputEl, errorMsg, config) => {
   const errorMsgID = inputEl.id + "-error";
+  console.log(errorMsgID);
   const errorMsgEl = formEl.querySelector("#" + errorMsgID);
-  inputEl.classList.add(config.inputErrorClass);
+  errorMsgEl.classList.add(config.errorClass);
   errorMsgEl.textContent = errorMsg;
   inputEl.classList.add(config.errorClass);
 };
 
-const hideInputError = (formEl, inputEl) => {
+const hideInputError = (formEl, inputEl, config) => {
   const errorMsgID = inputEl.id + "-error";
   const errorMsgEl = formEl.querySelector("#" + errorMsgID);
-  inputEl.classList.remove(config.inputErrorClass);
+  errorMsgEl.classList.remove(config.errorClass);
   errorMsgEl.textContent = "";
   inputEl.classList.remove(config.errorClass);
 };
 
 const checkInputValidity = (formEl, inputEl, config) => {
+  console.log(inputEl.validity);
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage, config);
   } else {
@@ -38,15 +40,14 @@ const hasInvalidInput = (inputList) => {
 };
 
 const toggleButtonState = (inputList, buttonEl, config) => {
-  console.log(buttonEl);
   if (hasInvalidInput(inputList)) {
-    disableButton(buttonEl);
+    disableButton(buttonEl, config);
   } else {
-    enableButton(buttonEl);
+    enableButton(buttonEl, config);
   }
 };
 
-const disableButton = (buttonEl) => {
+const disableButton = (buttonEl, config) => {
   buttonEl.disabled = true;
   buttonEl.classList.add(config.inactiveButtonClass);
 };
@@ -57,7 +58,7 @@ const enableButton = (buttonEl, config) => {
 };
 
 const resetValidation = (formEl, inputList) => {
-  inputList.foreach((input) => {
+  inputList.forEach((input) => {
     hideInputError(formEl, input);
   });
 };
@@ -79,7 +80,6 @@ const setEventListener = (formEl, config) => {
 };
 
 const enableValidation = (config) => {
-  console.log(config.formSelector);
   const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formEl) => {
     setEventListener(formEl, config);
