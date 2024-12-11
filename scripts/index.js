@@ -64,6 +64,24 @@ function handleEscape(evt) {
   }
 }
 
+function handleOverlay(evt) {
+  if (evt.target.classList.contains("modal_opened")) {
+    closeModal(evt.target);
+  }
+}
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  modal.addEventListener("mousedown", handleOverlay);
+  document.addEventListener("keyup", handleEscape);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  modal.removeEventListener("mousedown", handleOverlay);
+  document.removeEventListener("keyup", handleEscape);
+}
+
 function handleAddCardSubmit(evt) {
   console.log(settings.inactiveButtonClass);
   console.log(cardSubmitBtn);
