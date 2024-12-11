@@ -59,7 +59,10 @@ const enableButton = (buttonEl, config) => {
 
 const resetValidation = (formEl, inputList) => {
   inputList.forEach((input) => {
-    hideInputError(formEl, input);
+    hideInputError(formEl, input, {
+      inputErrorClass: "modal__input_type_error",
+      errorClass: "modal__error",
+    });
   });
 };
 

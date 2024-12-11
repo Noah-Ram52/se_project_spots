@@ -57,6 +57,13 @@ const exitingPreviewModalImageEl =
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const activePopup = document.querySelector(".modal_opened");
+    closeModal(activePopup);
+  }
+}
+
 function handleAddCardSubmit(evt) {
   console.log(settings.inactiveButtonClass);
   console.log(cardSubmitBtn);
@@ -104,10 +111,12 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keyup", handleEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", handleEscape);
 }
 
 function handleEditFormSubmit(evt) {
