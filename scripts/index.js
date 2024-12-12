@@ -65,8 +65,11 @@ function handleEscape(evt) {
 }
 
 function handleOverlay(evt) {
+  console.log("Overlay clicked");
+  console.log("Clicked element classes:", evt.target.classList);
   if (evt.target.classList.contains("modal_opened")) {
-    closeModal(evt.target);
+    console.log("Closing modal");
+    closeModal(evt.currentTarget);
   }
 }
 
@@ -125,16 +128,6 @@ function getCardElement(data) {
   });
 
   return cardElement;
-}
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keyup", handleEscape);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", handleEscape);
 }
 
 function handleEditFormSubmit(evt) {
