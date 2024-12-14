@@ -173,7 +173,7 @@
   border: 1px solid rgba(255, 0, 0, 0.6);
 }
 
-.modal__button_inactive {
+.modal__submit-btn_inactive {
   background-color: grey;
   cursor: not-allowed;
 }

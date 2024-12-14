@@ -142,10 +142,11 @@ profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
   openModal(editProfileModal);
-  resetValidation(editProfileModal, [
-    editModalNameInput,
-    editModalDescriptionInput,
-  ]);
+  resetValidation(
+    editProfileModal,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
 });
 editModalCloseButton.addEventListener("click", () => {
   closeModal(editProfileModal);
@@ -156,8 +157,6 @@ exitingPreviewModalImageEl.addEventListener("click", () => {
 });
 
 profileModalPost.addEventListener("click", () => {
-  editModalNameInput.value = profileName.textContent;
-  editModalDescriptionInput.value = profileDescription.textContent;
   openModal(cardModal);
 });
 cardModalCloseBtn.addEventListener("click", () => {
