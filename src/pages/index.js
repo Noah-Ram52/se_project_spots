@@ -1,5 +1,10 @@
 import "./index.css";
-import { enableValidation, settings } from "../scripts/valadation.js";
+import {
+  enableValidation,
+  settings,
+  disableButton,
+} from "../scripts/valadation.js";
+
 import Api from "../utils/Api.js";
 
 const api = new Api({
@@ -112,6 +117,12 @@ function handleAvatarSubmit(evt) {
     .editAvatarInfo(avatarLinkInput.value)
     .then((data) => {
       console.log(data.avatar);
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
+      userAvatar.src = data.avatar;
+
+      closeModal(avatarModal);
+      avatarForm.reset();
     })
     .catch(console.error);
 }

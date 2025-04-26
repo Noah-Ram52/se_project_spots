@@ -47,11 +47,6 @@ const toggleButtonState = (inputList, buttonEl, config) => {
   }
 };
 
-const disableButton = (buttonEl, config) => {
-  buttonEl.disabled = true;
-  buttonEl.classList.add(config.inactiveButtonClass);
-};
-
 const enableButton = (buttonEl, config) => {
   buttonEl.disabled = false;
   buttonEl.classList.remove(config.inactiveButtonClass);
@@ -75,6 +70,11 @@ const setEventListener = (formEl, config) => {
       toggleButtonState(inputList, buttonElement, config);
     });
   });
+};
+
+export const disableButton = (buttonEl, config) => {
+  buttonEl.disabled = true;
+  buttonEl.classList.add(config.inactiveButtonClass);
 };
 
 export const enableValidation = (config) => {
