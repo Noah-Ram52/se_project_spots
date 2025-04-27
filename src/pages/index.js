@@ -3,6 +3,7 @@ import {
   enableValidation,
   settings,
   disableButton,
+  resetValidation,
 } from "../scripts/valadation.js";
 
 import Api from "../utils/Api.js";
@@ -73,6 +74,8 @@ const exitingPreviewModalImageEl =
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
+let selectedCard, selectedCardId;
+
 function handleEscape(evt) {
   if (evt.key === "Escape") {
     const activePopup = document.querySelector(".modal_opened");
@@ -99,8 +102,6 @@ function closeModal(modal) {
 }
 
 function handleAddCardSubmit(evt) {
-  console.log(settings.inactiveButtonClass);
-  console.log(cardSubmitBtn);
   evt.preventDefault();
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
@@ -116,11 +117,9 @@ function handleAvatarSubmit(evt) {
   api
     .editAvatarInfo(avatarLinkInput.value)
     .then((data) => {
-      console.log(data.avatar);
       profileName.textContent = data.name;
       profileDescription.textContent = data.about;
       userAvatar.src = data.avatar;
-
       closeModal(avatarModal);
       avatarForm.reset();
     })
@@ -146,9 +145,11 @@ function getCardElement(data) {
   });
 
   cardDeleteBtn.addEventListener("click", () => {
-    // cardElement.remove();
+    cardElement.remove();
     openModal(deleteModal);
   });
+
+  // deleteButton.addEventListener("click", (evt) => {
 
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
@@ -163,10 +164,7 @@ function getCardElement(data) {
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
   api
-    .editUserInfo({
-      name: editModalNameInput.value,
-      about: editModalDescriptionInput.value,
-    })
+    .editUserInfo(editModalNameInput.value, editModalDescriptionInput.value)
     .then((data) => {
       /// use data argumennt instead of input values
       profileName.textContent = data.name;

@@ -180,7 +180,10 @@
     <!-- TODO - Style the modal -->
     <div class="modal" id="delete-modal">
       <div class="modal__container">
-        <button type="button" class="modal__close-btn"></button>
+        <button
+          type="button"
+          class="modal__close-btn modal__close-btn_delete"
+        ></button>
         <h2 class="modal__title modal__delete-title">Deleting Card Image...</h2>
         <form
           name="edit-avatar-form"
@@ -188,8 +191,18 @@
           id="delete-form"
           novalidate
         >
-          <button type="submit" class="modal__submit-btn">Delete</button>
-          <button type="submit" class="modal__submit-btn">Cancel</button>
+          <button
+            type="submit"
+            class="modal__submit-btn modal__submit-btn_delete"
+          >
+            Delete
+          </button>
+          <button
+            type="submit"
+            class="modal__submit-btn modal__submit-btn_cancel"
+          >
+            Cancel
+          </button>
         </form>
       </div>
     </div>
