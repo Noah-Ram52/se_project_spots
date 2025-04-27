@@ -61,6 +61,9 @@ const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
 const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
 const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 
+// Delete form elements
+const deleteModal = document.querySelector("#delete-modal");
+
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
@@ -78,10 +81,7 @@ function handleEscape(evt) {
 }
 
 function handleOverlay(evt) {
-  console.log("Overlay clicked");
-  console.log("Clicked element classes:", evt.target.classList);
   if (evt.target.classList.contains("modal_opened")) {
-    console.log("Closing modal");
     closeModal(evt.currentTarget);
   }
 }
@@ -146,7 +146,8 @@ function getCardElement(data) {
   });
 
   cardDeleteBtn.addEventListener("click", () => {
-    cardElement.remove();
+    // cardElement.remove();
+    openModal(deleteModal);
   });
 
   cardImageEl.addEventListener("click", () => {
