@@ -154,8 +154,20 @@ function getCardElement(data) {
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
 
-  cardLikeBtn.addEventListener("click", () => {
-    cardLikeBtn.classList.toggle("card__like-btn_liked");
+  // cardLikeBtn.addEventListener("click", () => {
+  //   cardLikeBtn.classList.toggle("card__like-btn_liked");
+  // });
+
+  cardLikeBtn.addEventListener("click", (evt) => {
+    const isLiked = cardLikeBtn.classList.contains("card__like-btn_liked");
+
+    api
+      .handleLikeStatus(data._id, isLiked)
+      .then((updatedCard) => {
+        cardLikeBtn.classList.toggle("card__like-btn_liked");
+        // Optional: Update any other UI elements, like the like counter
+      })
+      .catch(console.error);
   });
 
   cardDeleteBtn.addEventListener("click", () => {
@@ -163,11 +175,8 @@ function getCardElement(data) {
     console.log("Card ID being selected:", data._id);
     selectedCardId = data._id;
     selectedCard = cardElement;
-    // cardElement.remove();
     openModal(deleteModal);
   });
-
-  // deleteButton.addEventListener("click", (evt) => {
 
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
