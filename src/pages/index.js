@@ -154,16 +154,16 @@ function getCardElement(data) {
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
 
-  // cardLikeBtn.addEventListener("click", () => {
-  //   cardLikeBtn.classList.toggle("card__like-btn_liked");
-  // });
+  if (data.isLiked) {
+    cardLikeBtn.classList.add("card__like-btn_liked");
+  }
 
   cardLikeBtn.addEventListener("click", (evt) => {
     const isLiked = cardLikeBtn.classList.contains("card__like-btn_liked");
 
     api
       .handleLikeStatus(data._id, isLiked)
-      .then((updatedCard) => {
+      .then(() => {
         cardLikeBtn.classList.toggle("card__like-btn_liked");
         // Optional: Update any other UI elements, like the like counter
       })
