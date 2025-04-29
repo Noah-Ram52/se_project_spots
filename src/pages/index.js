@@ -289,7 +289,7 @@ deleteModalCloseBtn.addEventListener("click", () => {
 });
 
 deleteModalCancelBtn.addEventListener("click", () => {
-  closeModal();
+  closeModal(deleteModal);
 });
 
 editProfileFormElement.addEventListener("submit", handleEditFormSubmit);
