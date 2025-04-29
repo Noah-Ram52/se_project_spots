@@ -1,7 +1,7 @@
-# Project 3: Spots
+# Project 9: Spots
 
 ```
-Project 3 involves screen sizes to multiple devices, no explict instructions for further comprehension, two differents fonts, and further development of your own understanding of the concept.
+Project 9 involves using API and where to use it.
 ```
 
 ## Description of Project 3
