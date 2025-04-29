@@ -5,6 +5,7 @@ import {
   disableButton,
   resetValidation,
 } from "../scripts/valadation.js";
+import { setButtonText, setDeleteBtnText } from "../utils/helpers.js";
 import Api from "../utils/Api.js";
 
 const api = new Api({
@@ -14,7 +15,7 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-//Destructure the second item in the callback of the .then()
+
 api
   .getAppInfo()
   .then(([cards, userInfo]) => {
@@ -113,6 +114,9 @@ function handleAddCardSubmit(evt) {
     link: cardLinkInput.value,
   };
 
+  const submitBtn = evt.submitter;
+  submitBtn.textContent = "Saving...";
+
   api
     .postNewCard(newCardData)
     .then((card) => {
@@ -122,11 +126,19 @@ function handleAddCardSubmit(evt) {
       cardForm.reset();
       disableButton(cardSubmitBtn, settings);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitBtn, false, "Save", "Saving...");
+      submitBtn.textContent = "Save";
+    });
 }
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
+
+  const submitBtn = evt.submitter;
+  submitBtn.textContent = "Saving...";
+
   api
     .editAvatarInfo(avatarLinkInput.value)
     .then((data) => {
@@ -136,7 +148,11 @@ function handleAvatarSubmit(evt) {
       closeModal(avatarModal);
       avatarForm.reset();
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitBtn, false, "Save", "Saving...");
+      submitBtn.textContent = "Save";
+    });
 }
 
 function getCardElement(data) {
@@ -190,6 +206,11 @@ function getCardElement(data) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  submitBtn.textContent = "Saving...";
+
+  setButtonText(submitBtn, true, "Save", "Saving...");
+
   api
     .editUserInfo(editModalNameInput.value, editModalDescriptionInput.value)
     .then((data) => {
@@ -197,8 +218,15 @@ function handleEditFormSubmit(evt) {
       profileDescription.textContent = data.about;
       closeModal(editProfileModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      // TODO - Call the setButtonText instead
+      setButtonText(submitBtn, false, "Save", "Saving...");
+      submitBtn.textContent = "Save";
+    });
 }
+
+// TODO - Implement loading text for all other form submissions
 
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
@@ -238,13 +266,22 @@ avatarModalCloseBtn.addEventListener("click", () => {
 deleteModalForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   console.log("Attempting to delete card with ID:", selectedCardId);
+
+  const submitDelBtn = evt.submitter;
+  submitDelBtn.textContent = "Deleting...";
+
   api
     .deleteCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
       closeModal(deleteModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      // TODO - Call the setButtonText instead
+      setDeleteBtnText(submitDelBtn, false, "Delete", "Deleting...");
+      submitDelBtn.textContent = "Delete";
+    });
 });
 
 deleteModalCloseBtn.addEventListener("click", () => {
