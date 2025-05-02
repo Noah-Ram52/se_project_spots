@@ -1,15 +1,17 @@
-# Project 3: Spots
+# Project 9: Spots
 
 ```
-Project 3 involves screen sizes to multiple devices, no explict instructions for further comprehension, two differents fonts, and further development of your own understanding of the concept.
+Project 9 involves using API and how I am involving index.js with my Api.js.
 ```
 
 ## Description of Project 3
 
-1. HTML : Writing out header, cards, footer, and linking images.
-2. index.css : Linked all files to the CSS, so they are applied.
-3. Blocks Folder : Using a blocks folder to seperate CSS files for faster loading time.
-4. Images Folder : Exported all images to the images folder.
+1. Api.js : .
+
+2. index.js : Linked all files to the CSS, so they are applied.
+3. Using npm : Using a blocks folder to seperate CSS files for faster loading time.
+
+4. Webpack: Using webpack.config.js for building the server
 
 ### Improvements
 
@@ -19,8 +21,8 @@ Project 3 involves screen sizes to multiple devices, no explict instructions for
 
 ### Deployment
 
-- [Noah Ramos's Project 3 Spots](https://noah-ram52.github.io/se_project_spots/)
+- [Noah Ramos's Project 9 Spots](https://noah-ram52.github.io/se_project_spots/)
 
-- [Noah Ramos's Project 3 GitHub View](https://github.com/Noah-Ram52/se_project_spots)
+- [Noah Ramos's Project 9 GitHub View](https://github.com/Noah-Ram52/se_project_spots)
 
 - [Noah Ramos's Project 3 Video](https://www.youtube.com/watch?v=wiJuh27tgYk)

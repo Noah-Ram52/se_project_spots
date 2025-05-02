@@ -6,7 +6,6 @@
     <title>Triple Ten Spots</title>
     <meta name="author" content="Noah Ramos" />
     <meta name="description" content="Spots for TripleTen" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <meta
       name="keywords"
@@ -17,27 +16,41 @@
     <div class="page">
       <header class="header">
         <img
-          src="./images/spots__logo.svg"
+          src="<%=require('./images/spots__logo.svg')%>"
           alt="Spots_Logo_Path"
           class="header__logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="./images/avatar.jpg"
-            alt="Spots__Profile"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <button class="profile__avatar-btn">
+              <img
+                class="profile__pencil-icon"
+                src="<%=require('./images/pencil_light.svg')%>"
+                alt="Pencil Light icon"
+              />
+            </button>
+            <img
+              src="<%=require('./images/avatar.jpg')%>"
+              alt="Spots__Profile"
+              class="profile__avatar"
+            />
+          </div>
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
-              <img src="./images/Spots__pencil.svg" alt="Edit" />Edit Profile
+              <img
+                src="<%=require('./images/Spots__pencil.svg')%>"
+                alt="Edit"
+              />
+              Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-btn">
-            <img src="./images/plus.svg" alt="Plus Icon" />New Post
+            <img src="<%=require('./images/plus.svg')%>" alt="Plus Icon" />New
+            Post
           </button>
         </section>
         <section class="cards page__section">
@@ -143,7 +156,56 @@
         <p class="modal__caption"></p>
       </div>
     </div>
-    <script defer src="./scripts/index.js"></script>
-    <script defer src="./scripts/valadation.js"></script>
+    <div class="modal" id="avatar-modal">
+      <div class="modal__container">
+        <button type="button" class="modal__close-btn"></button>
+        <h2 class="modal__title">Edit Avatar</h2>
+        <form name="edit-avatar-form" class="modal__form" novalidate>
+          <label for="profile-avatar-input" class="modal__label">
+            Avatar
+            <input
+              id="profile-avatar-input"
+              name="avatar"
+              class="modal__input"
+              placeholder="Upload Avatar"
+              type="url"
+              required
+            />
+            <span id="profile-avatar-input-error" class="modal__error"></span>
+          </label>
+          <button type="submit" class="modal__submit-btn">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- TODO - Style the modal -->
+    <div class="modal" id="delete-modal">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close-btn modal__close-btn_delete"
+        ></button>
+        <h2 class="modal__title modal__delete-title">Delete Card Image?</h2>
+        <form
+          name="edit-avatar-form"
+          class="modal__form modal__delete-form"
+          id="delete-form"
+          novalidate
+        >
+          <button
+            type="submit"
+            class="modal__submit-btn modal__submit-btn_delete"
+          >
+            Delete
+          </button>
+          <button
+            type="button"
+            class="modal__submit-btn modal__submit-btn_cancel"
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
