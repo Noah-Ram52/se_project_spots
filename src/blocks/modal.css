@@ -1,0 +1,276 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.modal_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal__container {
+  background: #fff;
+  padding: 32px 50px;
+  max-width: 730px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.modal__container:hover {
+  opacity: 1;
+}
+
+.modal__content {
+  max-width: 720px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  border-radius: 10px;
+  position: relative;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__image {
+  object-fit: contain;
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 8px;
+}
+
+.modal__caption {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 4px 8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fff;
+  position: absolute;
+  background-color: #212121;
+  border-radius: 8px;
+  left: 0;
+  top: calc(100% + 10px);
+}
+
+.modal__image-container {
+  padding: 0;
+  position: relative;
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 32px;
+  right: 50px;
+  width: 40px;
+  height: 40px;
+  background-image: url(../images/edit-close.svg);
+  background-size: contain;
+  border: none;
+  position: absolute;
+  top: 32px;
+  right: 50px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.modal__close-btn_delete {
+  background-image: url(../images/White_Close_Icon.svg);
+  top: 0;
+  right: -55px;
+}
+
+.modal_type_preview {
+  padding: 0;
+}
+
+.modal__close_type_preview {
+  top: 0px;
+  right: -32px;
+  background-image: url(../images/White_Close_Icon.svg);
+  opacity: 1;
+}
+
+.modal__close-btn_type_preview {
+  top: 5px;
+  right: -58px;
+  background-image: url(../images/White_Close_Icon.svg);
+  color: #fff;
+}
+
+.modal__title {
+  margin: 0 0 32px;
+  font-family: "Poppins", Arial, Helvetica, serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+  opacity: 0.7;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17.6px;
+}
+
+.modal__form {
+  margin-top: 32px;
+}
+
+.modal__delete-title {
+  display: flex;
+  justify-content: center;
+}
+
+.modal__delete-form {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.modal__input {
+  padding: 16px 12px;
+  border: 1px solid rgba(33, 33, 33, 0.4);
+  border-radius: 8px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.modal__submit-btn {
+  width: 156px;
+  padding: 18px 0;
+  border-radius: 8px;
+  color: #fcf5e5;
+  background-color: #000;
+  border: none;
+  max-width: 156px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.modal__submit-btn_delete {
+  background: rgba(255, 101, 101, 1);
+  color: #000;
+}
+
+.modal__submit-btn_cancel {
+  background: #fff;
+  border: 1px solid black;
+  color: #000;
+}
+
+.modal__submit-btn_delete:hover {
+  background: rgba(255, 51, 51, 1);
+  color: #000;
+}
+
+.modal__submit-btn_cancel:hover {
+  background: rgba(33, 33, 33, 1);
+  border: 1px solid black;
+  color: #fff;
+}
+
+.modal__error {
+  display: block;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17.6px;
+  text-align: left;
+  color: red;
+  visibility: visible;
+}
+
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.modal__submit-btn_inactive {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 480px) {
+  .modal {
+    padding: 0 10px;
+  }
+
+  .modal__container {
+    padding: 12px;
+    max-width: 300px;
+    width: 100%;
+  }
+
+  .modal__title {
+    font-size: 20px;
+    margin: 10px 0 34px;
+  }
+
+  .modal__input {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+  }
+
+  .modal__caption {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.2px;
+    text-align: left;
+  }
+
+  .modal__close-btn {
+    top: 18px;
+    right: 14px;
+  }
+
+  .modal__label {
+    margin-bottom: 24px;
+  }
+
+  .modal__submit-btn {
+    max-width: 276px;
+    width: 100%;
+  }
+
+  .modal__close-btn_type_preview {
+    top: -43px;
+    right: -4px;
+  }
+
+  .modal__image {
+    max-height: none;
+    max-width: none;
+    width: 100%;
+  }
+}
