@@ -7,6 +7,7 @@
 }
 
 .profile__avatar {
+  background-image: url(../images/pencil_light.svg);
   border-radius: 8px;
   height: 190px;
   width: 190px;

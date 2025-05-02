@@ -32,7 +32,7 @@
 }
 
 .card__like-btn {
-  background-image: url(../images/like-button.svg);
+  background-image: url("../images/like-button.svg");
   background-size: cover;
   background-repeat: no-repeat;
   width: 23px;
@@ -71,7 +71,7 @@
 }
 
 .card__delete-btn:hover {
-  background: url(../images/DeleteHover.svg);
+  background-image: url("../images/DeleteHover.svg");
 }
 
 @media screen and (max-width: 627px) {
