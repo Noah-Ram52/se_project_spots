@@ -106,16 +106,27 @@ function closeModal(modal) {
   document.removeEventListener("keyup", handleEscape);
 }
 
-function handleAddCardSubmit(evt) {
+function setSubmitButtonText(evt, text) {
   evt.preventDefault();
+
+  const submitBtn = evt.submitter;
+  submitBtn.textContent = text;
+}
+
+function setDelSubmitButtonText(evt, text) {
+  evt.preventDefault();
+
+  const submitDelBtn = evt.submitter;
+  submitDelBtn.textContent = text;
+}
+
+function handleAddCardSubmit(evt) {
+  setSubmitButtonText(evt, "Saving...");
 
   const newCardData = {
     name: cardNameInput.value,
     link: cardLinkInput.value,
   };
-
-  const submitBtn = evt.submitter;
-  submitBtn.textContent = "Saving...";
 
   api
     .postNewCard(newCardData)
@@ -128,16 +139,12 @@ function handleAddCardSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(submitBtn, false, "Save", "Saving...");
-      submitBtn.textContent = "Save";
+      setButtonText(evt.submitter, false, "Save", "Saving...");
     });
 }
 
 function handleAvatarSubmit(evt) {
-  evt.preventDefault();
-
-  const submitBtn = evt.submitter;
-  submitBtn.textContent = "Saving...";
+  setSubmitButtonText(evt, "Saving...");
 
   api
     .editAvatarInfo(avatarLinkInput.value)
@@ -147,11 +154,12 @@ function handleAvatarSubmit(evt) {
       userAvatar.src = data.avatar;
       closeModal(avatarModal);
       avatarForm.reset();
+      evt.submitter.disabled = true;
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(submitBtn, false, "Save", "Saving...");
-      submitBtn.textContent = "Save";
+      setButtonText(evt.submitter, false, "Save", "Saving...");
+      evt.submitter.disabled = false;
     });
 }
 
@@ -181,7 +189,6 @@ function getCardElement(data) {
       .handleLikeStatus(data._id, isLiked)
       .then(() => {
         cardLikeBtn.classList.toggle("card__like-btn_liked");
-        // Optional: Update any other UI elements, like the like counter
       })
       .catch(console.error);
   });
@@ -205,11 +212,7 @@ function getCardElement(data) {
 }
 
 function handleEditFormSubmit(evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  submitBtn.textContent = "Saving...";
-
-  setButtonText(submitBtn, true, "Save", "Saving...");
+  setSubmitButtonText(evt, "Saving...");
 
   api
     .editUserInfo(editModalNameInput.value, editModalDescriptionInput.value)
@@ -220,9 +223,7 @@ function handleEditFormSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      // TODO - Call the setButtonText instead
-      setButtonText(submitBtn, false, "Save", "Saving...");
-      submitBtn.textContent = "Save";
+      setButtonText(evt.submitter, false, "Save", "Saving...");
     });
 }
 
@@ -264,11 +265,8 @@ avatarModalCloseBtn.addEventListener("click", () => {
 });
 
 deleteModalForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
+  setDelSubmitButtonText(evt, "Deleting...");
   console.log("Attempting to delete card with ID:", selectedCardId);
-
-  const submitDelBtn = evt.submitter;
-  submitDelBtn.textContent = "Deleting...";
 
   api
     .deleteCard(selectedCardId)
@@ -279,8 +277,7 @@ deleteModalForm.addEventListener("submit", (evt) => {
     .catch(console.error)
     .finally(() => {
       // TODO - Call the setButtonText instead
-      setDeleteBtnText(submitDelBtn, false, "Delete", "Deleting...");
-      submitDelBtn.textContent = "Delete";
+      setDeleteBtnText(evt.submitter, false, "Delete", "Deleting...");
     });
 });
 
